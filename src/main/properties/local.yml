@@ -1,0 +1,50 @@
+herukoUrl: https://bpdts-test-app.herokuapp.com/
+searchRadius: 50
+
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+
+    # Sets the level for 'com.example.app' to DEBUG.
+    com.example.app: DEBUG
+
+# Logback's Time Based Rolling Policy - archivedLogFilenamePattern: /tmp/application-%d{yyyy-MM-dd}.log.gz
+# Logback's Size and Time Based Rolling Policy -  archivedLogFilenamePattern: /tmp/application-%d{yyyy-MM-dd}-%i.log.gz
+# Logback's Fixed Window Rolling Policy -  archivedLogFilenamePattern: /tmp/application-%i.log.gz
+
+  appenders:
+    - type: console
+    - type: file
+      threshold: DEBUG
+      logFormat: "%-5level [%date{ISO8601}] [ucm-exceptions-service] %c: %m%n%rEx"
+      currentLogFilename: /tmp/application_exceptions_service.log
+      archivedLogFilenamePattern: /tmp/application_exceptions_service-%d{yyyy-MM-dd}-%i.log.gz
+      archivedFileCount: 7
+      timeZone: UTC
+      maxFileSize: 10MB
+
+server:
+  applicationConnectors:
+  - type: http
+    port: 8090
+  adminConnectors:
+  - type: http
+    port: 19043
+  registerDefaultExceptionMappers: false
+
+jerseyHttpClient:
+  timeout: 10000ms
+  connectionTimeout: 10000ms
+  timeToLive: 1h
+  cookiesEnabled: false
+  maxConnections: 1024
+  maxConnectionsPerRoute: 1024
+  keepAlive: 0ms
+  retries: 3
+  userAgent: tp-orchestrator-jersey-client
+  chunkedEncodingEnabled: false
