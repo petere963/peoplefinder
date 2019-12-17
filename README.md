@@ -21,3 +21,14 @@ The application can be built using Maven with the following command
 This create and executable jar file which can then be run as follows. The location of the configuration file needs to be supplied in the execution command - an example file is supplied in the code base at src/main/properties/local.yml - e.g.
 
 > java -jar peoplefinder-1.0.0-SNAPSHOT server src/main/properties/local.yml
+
+## API
+The application is accessed by a get to the following URLs. Note that the current implementation only supports http requests
+
+### All people within 50 miles of Leeds
+
+http://localhost:8090/people/leeds
+
+### All people within 50 miles of London
+
+http://localhost:8090/people/london
