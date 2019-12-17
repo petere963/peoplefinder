@@ -16,8 +16,8 @@ The supported cities are held in an Enum object _Locations.java_ within the appl
 
 The application can be built using Maven with the following command
 
-| mvn clean install
+> mvn clean install
 
-This create and executable jar file which can tghen be run as follows. The location of the configuration file needs to be supplied in the execution command - an example files is supplied in the code base at src/main/properties/local.yml - e.g.
+This create and executable jar file which can then be run as follows. The location of the configuration file needs to be supplied in the execution command - an example file is supplied in the code base at src/main/properties/local.yml - e.g.
 
-| java -jar peoplefinder-1.0.0-SNAPSHOT server src/main/properties/local.yml
+> java -jar peoplefinder-1.0.0-SNAPSHOT server src/main/properties/local.yml
