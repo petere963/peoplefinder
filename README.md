@@ -1,6 +1,6 @@
 # peoplefinder
 
-An API to find people that live in a city, within a configurable radius. The application is implemented using the Dropwizard farmework. It works by calling a seperate application to return a set of people which is then filtered based on Lat/Long coordinates.
+An API to find people that live in a city, within a configurable radius. The application is implemented using the Dropwizard farmework. It works by calling a separate application to return a set of people which is then filtered based on Lat/Long coordinates.
 
 The application currently supports Leeds and London as searchable cities.
 
