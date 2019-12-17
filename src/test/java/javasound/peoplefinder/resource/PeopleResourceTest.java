@@ -31,7 +31,7 @@ class PeopleResourceTest {
     @Test
     public void shouldExecutePeopleServiceOnFind() {
 
-        Response response = peopleResource.getPeopleInLondon();
+        Response response = peopleResource.getPeopleInCity("london");
         verify(peopleService).find(any(Locations.class));
         assertThat(response.getStatus()).isEqualTo(Response.Status.OK.getStatusCode());
     }
@@ -42,7 +42,7 @@ class PeopleResourceTest {
 
         when(peopleService.find(any(Locations.class))).thenThrow(new RuntimeException("someError"));
 
-        Response response = peopleResource.getPeopleInLondon();
+        Response response = peopleResource.getPeopleInCity("london");
         assertThat(response.getStatus()).isEqualTo(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode());
         verify(logger).error(Mockito.anyString(), any(Exception.class));
     }

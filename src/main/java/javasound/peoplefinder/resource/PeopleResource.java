@@ -2,13 +2,11 @@ package javasound.peoplefinder.resource;
 
 import javasound.peoplefinder.entity.Locations;
 import javasound.peoplefinder.entity.Person;
+import javasound.peoplefinder.entity.Place;
 import javasound.peoplefinder.service.PeopleService;
 import org.slf4j.Logger;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
@@ -28,11 +26,18 @@ public class PeopleResource {
     }
 
     @GET
-    @Path("/people/london")
-    public Response getPeopleInLondon() {
+    @Path("/people/{city}")
+    public Response getPeopleInCity(@PathParam("city") String city) {
+
+        Locations place = Locations.getPlace(city);
+        if(place == null) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(city + " is not recognised as a city")
+                    .build();
+        }
 
         try {
-            List<Person> people = peopleService.find(Locations.LONDON);
+            List<Person> people = peopleService.find(place);
             return Response.status(Response.Status.OK).entity(people).build();
         }
         catch(Exception e) {
