@@ -5,7 +5,7 @@ An API to find people that live in a city, within a configurable radius. The app
 The application currently supports Leeds and London as searchable cities.
 
 ## Configuration
-THwe following values are defined in a configuration file loaded at runtime
+The following values are defined in a configuration file loaded at runtime
 
 * Url of backend application
 * Radius of search area
